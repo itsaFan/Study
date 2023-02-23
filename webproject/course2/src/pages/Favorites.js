@@ -1,10 +1,6 @@
-import Layout from "../components/layout/layout";
+
 
 const FavoritesPage = () => {
-  return (
-    <Layout>
-      <div>Fav Pages</div>
-    </Layout>
-  );
+  return <div>Fav Pages</div>;
 };
 export default FavoritesPage;
