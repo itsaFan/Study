@@ -15,6 +15,9 @@ export default function Homepage() {
           <li>
             <Link href="/portfolio">Portfolio</Link>
           </li>
+          <li>
+            <Link href="/clients">Clients</Link>
+          </li>
         </ul>
         <div>
           <h1>Homepage</h1>
