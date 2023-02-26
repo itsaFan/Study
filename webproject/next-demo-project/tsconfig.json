@@ -19,6 +19,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "components/events/EventList.tsx", "components/events/EventList.js", "dummy-data.js", "components/events/EventItem.tsx"],
   "exclude": ["node_modules"]
 }

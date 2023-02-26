@@ -1,7 +1,12 @@
 import Head from "next/head";
 import styles from "@/styles/Home.module.css";
+import { getFeaturedEvents } from "@/dummy-data";
+import EventList from "@/components/events/EventList";
+
 
 export default function Homepage() {
+  const featuredEvents = getFeaturedEvents();
+
   return (
     <>
       <Head>
@@ -13,6 +18,7 @@ export default function Homepage() {
       <main>
         <div>
           <h1>Homepage</h1>
+          <EventList items={featuredEvents} />
         </div>
       </main>
     </>

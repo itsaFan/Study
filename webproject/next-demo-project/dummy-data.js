@@ -26,7 +26,7 @@ const DUMMY_EVENTS = [
       "A mountain event is an exciting opportunity for anyone looking to experience the beauty and adventure of the great outdoors. From hiking and rock climbing to skiing and snowboarding, there are a variety of activities that visitors can enjoy on a mountain getaway. The breathtaking views of the peaks and valleys, the crisp mountain air, and the peaceful serenity of the wilderness create a refreshing and rejuvenating atmosphere that is perfect for a relaxing vacation or an action-packed adventure. Visitors can also explore charming mountain towns and villages, sample delicious local cuisine, and immerse themselves in the rich culture and history of the region. Whether you are a nature lover, an adventure seeker, or just looking for a peaceful escape, a mountain event is an experience that everyone can enjoy.",
     location: "My Street 12, 10115 Broke City",
     date: "2022-04-10",
-    image: "images/extrovert-event.jpg",
+    image: "images/mountain-event.jpg",
     isFeatured: true,
   },
 ];
@@ -39,17 +39,17 @@ export function getAllEvents() {
   return DUMMY_EVENTS;
 }
 
-// export function getFilteredEvents(dateFilter) {
-//   const { year, month } = dateFilter;
+export function getFilteredEvents(dateFilter) {
+  const { year, month } = dateFilter;
 
-//   let filteredEvents = DUMMY_EVENTS.filter((event) => {
-//     const eventDate = new Date(event.date);
-//     return eventDate.getFullYear() === year && eventDate.getMonth() === month - 1;
-//   });
+  let filteredEvents = DUMMY_EVENTS.filter((event) => {
+    const eventDate = new Date(event.date);
+    return eventDate.getFullYear() === year && eventDate.getMonth() === month - 1;
+  });
 
-//   return filteredEvents;
-// }
+  return filteredEvents;
+}
 
-// export function getEventById(id) {
-//   return DUMMY_EVENTS.find((event) => event.id === id);
-// }
+export function getEventById(id) {
+  return DUMMY_EVENTS.find((event) => event.id === id);
+}
