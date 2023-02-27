@@ -5,8 +5,11 @@
 }
 
 body {
-  font-family: "Open Sans", "Lato", sans-serif;
-}
+    margin: 0;
+    font-family: 'Open Sans', 'Lato', sans-serif;
+    color: #E0E0E3;
+    background-color:#1C2224;
+  } 
 
 h1,
 h2,
