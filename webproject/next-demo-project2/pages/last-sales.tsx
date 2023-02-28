@@ -2,12 +2,12 @@ import { Sale } from "@/data/sale-data";
 import { useState } from "react";
 import useSWR from "swr";
 
-interface LastSalesPageProps {
-  sales: Sale[];
-}
+// interface LastSalesPageProps {
+//   sales: Sale[];
+// }
 
-export default function LastSalesPage(props: LastSalesPageProps) {
-  const [sales, setSales] = useState(props.sales);
+export default function LastSalesPage() {
+  // const [sales, setSales] = useState(props.sales);
   const { data, error } = useSWR<Sale[], Error>("https://test-nextjs-backend-default-rtdb.firebaseio.com/sales.json", async (url) => {
     const response = await fetch(url);
     const data = await response.json();
@@ -17,7 +17,7 @@ export default function LastSalesPage(props: LastSalesPageProps) {
       transformedSales.push({ id: key, username: data[key].username, volume: data[key].volume });
     }
     return transformedSales;
-  });
+  }, { fallback: <p>Loading...</p> });
 
   // Standard React data Fetching
   //   useEffect(() => {
@@ -38,7 +38,7 @@ export default function LastSalesPage(props: LastSalesPageProps) {
     return <p>Error, fail to load</p>;
   }
 
-  if (!data && !sales) {
+  if (!data) {
     return <p>Loading...</p>;
   }
 
@@ -49,7 +49,7 @@ export default function LastSalesPage(props: LastSalesPageProps) {
   return (
     <div>
       <ul>
-        {sales?.map((sale) => (
+        {data?.map((sale) => (
           <li key={sale.id}>
             {sale.username} - {sale.volume}
           </li>
@@ -60,7 +60,7 @@ export default function LastSalesPage(props: LastSalesPageProps) {
 }
 
 export async function getStaticProps() {
-  //   console.log("regenerating")
+    console.log("regenerating")
   const response = await fetch("https://test-nextjs-backend-default-rtdb.firebaseio.com/sales.json");
   const data = await response.json();
 
@@ -73,5 +73,5 @@ export async function getStaticProps() {
     });
   }
 
-  return { props: { sales: transformedSales }, revalidate: 5 };
+  return { props: { sales: transformedSales }, revalidate: 60 };
 }
