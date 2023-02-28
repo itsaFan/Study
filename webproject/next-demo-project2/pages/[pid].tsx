@@ -16,9 +16,9 @@ export default function ProductDetailPage(props: Props) {
   const { loadedProduct } = props;
 
   // need to use this code if the fallback set to true
-  // if(!loadedProduct) {
-  //   return <p>Loading...</p>
-  // }
+  if(!loadedProduct) {
+    return <p>Loading...</p>
+  }
 
   return (
     <Fragment>
@@ -34,6 +34,11 @@ export async function getStaticProps(context: StaticContext) {
   const data = await getData();
 
   const product = data.products.find((product) => product.id === productId);
+
+  //fallback true : if no product found on database redirect it to nextJs notFound page, (or can costumize)
+  if (!product) {
+    return {notFound: true};
+  }
   return {
     props: {
       loadedProduct: product,
@@ -47,7 +52,7 @@ export async function getStaticPaths() {
   const pathWithParams = ids.map((id) => ({ params: { pid: id } }));
   return {
     paths: pathWithParams,
-    fallback: false,
+    fallback: true,
     //set fallback to true means that productID will be generated automatically  & and if you set to false "it will only look at possible ID  avaialable on the database
     // if fallback set to blocking , the nextJs will block and wait for the page to render and we dont hve to create !loading logic
     // fallback: 'blocking',
