@@ -1,7 +1,5 @@
 import { userProps, UserServerContext } from "@/data/user-data";
 
-
-
 export default function UserProfilePage(props: userProps) {
   return (
     <div>
@@ -12,8 +10,9 @@ export default function UserProfilePage(props: userProps) {
 
 export async function getServerSideProps(context: UserServerContext) {
   const { params, req, res } = context;
-//   console.log(req);
-//   console.log(res);
+  // console.log("Server side code");
+  //   console.log(req);
+  //   console.log(res);
 
   return {
     props: { username: "itsaFan" },
