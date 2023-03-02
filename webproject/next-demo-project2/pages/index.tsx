@@ -21,7 +21,7 @@ export default function Homepage(props: ProductProps) {
 }
 
 export async function getStaticProps() {
-  // console.log('(Re-)Generating...');
+  console.log('(Re-)Generating...');
   const filePath = path.join(process.cwd(), "data", "dummy-backend.json");
   //fs/promises module returns a buffer that needs to be converted to a string before it can be parsed as JSON.
   //To convert the buffer to a string, pass the encoding type "utf-8" as the second argument to the readFile method
